@@ -20,12 +20,15 @@ namespace SimpleStatelessActorClient
                     EventsDemo(proxy);
                     break;
             }
+            Console.WriteLine("\n\n----- Press any key to exit! -----");
             Console.ReadLine();
         }
 
         private static void EventsDemo(ISimpleStatelessActor proxy)
         {
-            var doWork = proxy.DoWorkAsync();
+            Console.WriteLine("Enter the length of time, in seconds, you want to ping for:");
+            var seconds = Convert.ToInt32(Console.ReadLine());
+            var doWork = proxy.DoWorkAsync(seconds);
             proxy.SubscribeAsync(new SimpleStatelessActorEventsHandler()).Wait();
             doWork.Wait();
         }

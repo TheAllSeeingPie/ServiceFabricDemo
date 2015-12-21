@@ -7,7 +7,7 @@ namespace SimpleStatelessActorClient
     {
         public void Ping(string message)
         {
-            Console.WriteLine(message);
+            Console.Write($"{message}\t");
         }
     }
 }

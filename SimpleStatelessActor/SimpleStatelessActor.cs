@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors;
 using SimpleStatelessActor.Interfaces;
@@ -14,9 +15,12 @@ namespace SimpleStatelessActor
     {
         private Random _random = new Random();
 
-        public async Task DoWorkAsync()
+        public async Task DoWorkAsync(int seconds)
         {
-            while (true)
+            var milliseconds = seconds*1000;
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            while (stopwatch.ElapsedMilliseconds < milliseconds)
             {
                 await Task.Delay(_random.Next(1, 500));
                 var @event = GetEvent<ISimpleStatelessActorEvents>();
