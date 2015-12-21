@@ -65,7 +65,7 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISimpleStatelessActorEvents.cs" />
+    <Compile Include="ISimpleStatelessActorEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ISimpleStatelessActor.cs" />
   </ItemGroup>

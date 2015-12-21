@@ -23,7 +23,7 @@ namespace SimpleStatelessActor
             while (stopwatch.ElapsedMilliseconds < milliseconds)
             {
                 await Task.Delay(_random.Next(1, 500));
-                var @event = GetEvent<ISimpleStatelessActorEvents>();
+                var @event = GetEvent<ISimpleStatelessActorEvent>();
                 @event.Ping("Ping!");
             }
         }

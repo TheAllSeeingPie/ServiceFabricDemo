@@ -3,7 +3,7 @@ using SimpleStatelessActor.Interfaces;
 
 namespace SimpleStatelessActorClient
 {
-    internal class SimpleStatelessActorEventsHandler : ISimpleStatelessActorEvents
+    internal class ISimpleStatelessActorEventHandler : ISimpleStatelessActorEvent
     {
         public void Ping(string message)
         {

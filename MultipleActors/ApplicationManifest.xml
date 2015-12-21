@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MultipleActorsType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <Parameters>
+      <Parameter Name="HappyActorService_PartitionCount" DefaultValue="10" />
+      <Parameter Name="GrumpyActorService_PartitionCount" DefaultValue="10" />
+   </Parameters>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="HappyActorPkg" ServiceManifestVersion="1.0.0" />
+   </ServiceManifestImport>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="GrumpyActorPkg" ServiceManifestVersion="1.0.0" />
+   </ServiceManifestImport>
+   <DefaultServices>
+      <Service Name="HappyActorService" GeneratedIdRef="c1d1fef4-73ae-4fca-939f-a420e631d79c">
+         <StatelessService ServiceTypeName="HappyActorServiceType">
+            <UniformInt64Partition PartitionCount="[HappyActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+         </StatelessService>
+      </Service>
+      <Service Name="GrumpyActorService" GeneratedIdRef="1e7b7438-7d84-4605-b152-2cd8281ff158">
+         <StatelessService ServiceTypeName="GrumpyActorServiceType">
+            <UniformInt64Partition PartitionCount="[GrumpyActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+         </StatelessService>
+      </Service>
+   </DefaultServices>
+</ApplicationManifest>

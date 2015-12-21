@@ -2,7 +2,7 @@
 
 namespace SimpleStatelessActor.Interfaces
 {
-    public interface ISimpleStatelessActorEvents : IActorEvents
+    public interface ISimpleStatelessActorEvent : IActorEvents
     {
         void Ping(string message);
     }
