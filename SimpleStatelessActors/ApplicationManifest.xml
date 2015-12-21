@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="SimpleStatelessActorsType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <Parameters>
+      <Parameter Name="SimpleStatelessActorService_PartitionCount" DefaultValue="10" />
+   </Parameters>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="SimpleStatelessActorPkg" ServiceManifestVersion="1.0.0" />
+   </ServiceManifestImport>
+   <DefaultServices>
+      <Service Name="SimpleStatelessActorService" GeneratedIdRef="818ca00f-4e1b-431a-bd89-a9e64befa4c8">
+         <StatelessService ServiceTypeName="SimpleStatelessActorServiceType">
+            <UniformInt64Partition PartitionCount="[SimpleStatelessActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+         </StatelessService>
+      </Service>
+   </DefaultServices>
+</ApplicationManifest>
