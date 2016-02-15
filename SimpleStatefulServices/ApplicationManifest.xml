@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="SimpleStatefulServicesType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+   <Parameters>
+      <Parameter Name="SimpleStatefulService_MinReplicaSetSize" DefaultValue="2" />
+      <Parameter Name="SimpleStatefulService_PartitionCount" DefaultValue="1" />
+      <Parameter Name="SimpleStatefulService_TargetReplicaSetSize" DefaultValue="3" />
+   </Parameters>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="SimpleStatefulServicePkg" ServiceManifestVersion="1.0.0" />
+      <ConfigOverrides />
+   </ServiceManifestImport>
+   <DefaultServices>
+      <Service Name="SimpleStatefulService">
+         <StatefulService ServiceTypeName="SimpleStatefulServiceType" TargetReplicaSetSize="[SimpleStatefulService_TargetReplicaSetSize]" MinReplicaSetSize="[SimpleStatefulService_MinReplicaSetSize]">
+            <UniformInt64Partition PartitionCount="[SimpleStatefulService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+         </StatefulService>
+      </Service>
+   </DefaultServices>
+</ApplicationManifest>
